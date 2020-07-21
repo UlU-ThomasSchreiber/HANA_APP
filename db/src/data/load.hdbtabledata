@@ -14,6 +14,10 @@
 		"import_settings": {
          	"include_filter" : [ ],		
 			"import_columns": ["PURCHASEORDERID",
+			"HISTORY.CREATEDBY",
+			"HISTORY.CREATEDAT",
+			"HISTORY.CHANGEDBY",
+			"HISTORY.CHANGEDAT",
 			"NOTEID",
 			"PARTNER",
 			"CURRENCY",
@@ -28,6 +32,10 @@
 		},
 		"column_mappings": {
 			"PURCHASEORDERID": 1,
+			"HISTORY.CREATEDBY": 2,
+			"HISTORY.CREATEDAT": 3,
+			"HISTORY.CHANGEDBY": 4,
+			"HISTORY.CHANGEDAT": 5,
 			"NOTEID": 6,
 			"PARTNER": 7,
 			"CURRENCY": 8,

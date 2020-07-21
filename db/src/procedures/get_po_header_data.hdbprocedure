@@ -1,0 +1,24 @@
+PROCEDURE "get_po_header_data"(
+
+)
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   READS SQL DATA AS
+BEGIN
+SELECT COUNT(*) AS CREATE_CNT, "HISTORY.CREATEDBY" as EID
+     FROM "PurchaseOrder.Header" WHERE PURCHASEORDERID IN (
+                     SELECT PURCHASEORDERID
+                          FROM "PurchaseOrder.Item"
+          WHERE "PRODUCT" IS NOT NULL)
+GROUP BY  "HISTORY.CREATEDBY";
+
+SELECT COUNT(*) AS CHANGE_CNT, "HISTORY.CHANGEDBY" as EID
+     FROM "PurchaseOrder.Header" WHERE PURCHASEORDERID IN (
+                     SELECT PURCHASEORDERID
+                          FROM "PurchaseOrder.Item"
+          WHERE "PRODUCT" IS NOT NULL)
+GROUP BY  "HISTORY.CHANGEDBY";
+
+
+END
